@@ -1,7 +1,7 @@
 <?php 
 	include_once("../../connection/dbc.php");
 
-		$query = "SELECT shoes.id, types.type, brands.name AS brand, shoes.name AS product, SUM(logs.distance) as distance
+		$query = "SELECT shoes.id, types.type, brands.name AS brand, shoes.name AS product, SUM(logs.distance) as distance, shoes.timestamp
 		FROM shoes INNER JOIN brands
 		ON brands.id = shoes.brandId INNER JOIN types
 		ON types.id = shoes.typeId LEFT JOIN logs
