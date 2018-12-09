@@ -7,7 +7,7 @@
         $typeId = $data['typeId'];
         $product = $data['product'];
 
-        $query = "UPDATE shoes SET `typeId`=?, `brandId`=?, `name`=?) WHERE id=?";
+        $query = "UPDATE shoes SET `typeId`=?, `brandId`=?, `name`=? WHERE id=?";
         
         $stmt = $mysqli -> prepare($query);
 
