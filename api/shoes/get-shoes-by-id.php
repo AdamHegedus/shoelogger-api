@@ -8,13 +8,25 @@
 	FROM shoes WHERE shoes.id=?";
 
 	$stmt = $mysqli -> prepare($query);
-
 	$stmt -> bind_param("i", $id);
 
 	if ($stmt -> execute()) { 
+		$stmt -> bind_result($shoeId, $brandId, $typeId, $product, $timestamp);
 		$result = (object) [
-			'data' => $data
+			'data' => array()
 		];
+
+		while ($stmt -> fetch()) {
+			$item = (object) [
+				'id' => $shoeId,
+				'brandId' => $brandId,
+				'typeId' => $typeId,
+				'product' => $product,
+				'timestamp' => $timestamp,
+			];
+		}
+		array_push($result->data, $item);
+		
 	} else {
 		$result = (object) [
 			'data' => null,
